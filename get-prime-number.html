@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        function doWork() {
+            var output = "";
+            var lbound = parseInt(document.querySelector("#lbound").value);
+            var rbound = parseInt(document.querySelector("#rbound").value);
+            for (var i = lbound; i <= rbound; i++) {
+                if (test_prime(i)) {
+                    output += i + "\n";
+                }
+            }
+            document.querySelector("#output").value = output;
+        }
+
+        function test_prime(n) {
+
+            if (n === 1) {
+                return false;
+            }
+            else if (n === 2) {
+                return true;
+            } else {
+                for (var x = 2; x < n; x++) {
+                    if (n % x === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="fname">Số thứ nhất</label>
+    <input type="text" id="lbound"><br><br>
+    <label for="lname">Số thứ hai</label>
+    <input type="text" id="rbound"><br><br>
+    <input type="submit" value="Submit" onclick=doWork()><br><br>
+    <label for="output">Các số nguyên tố ở giữa là:</label>
+    <textarea id="output" rows="4" cols="50"></textarea>
+</body>
+</html>
